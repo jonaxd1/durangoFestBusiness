@@ -9,6 +9,9 @@ import Menu from '../screens/Menu';
 import Confirmation from '../screens/Confirmation';
 import ModifyProduct from '../screens/ModifyProduct';
 import Sales from '../screens/Sales';
+import Customers from '../screens/Customers';
+import Account from '../screens/Account';
+import Orders from '../screens/Orders';
 
 const BottomNavigator = createBottomTabNavigator(
 	{
@@ -29,6 +32,24 @@ const BottomNavigator = createBottomTabNavigator(
 				)
 			},
 		},
+		Clientes: {
+			screen: Customers,
+			navigationOptions: {
+				tabBarLabel: 'Clientes',
+				tabBarIcon: ({ tintColor }) => (
+				  <Icon name="format-list-bulleted" size={28} color={tintColor} />
+				)
+			},
+		},
+		Cuenta: {
+			screen: Account,
+			navigationOptions: {
+				tabBarLabel: 'Cuenta',
+				tabBarIcon: ({ tintColor }) => (
+				  <Icon name="store" size={28} color={tintColor} />
+				)
+			},
+		},
 	}, {
 		tabBarOptions: {
 			style: {
@@ -43,6 +64,7 @@ const navigator = createStackNavigator(
 		BottomNavigator,
 		Confirmation: Confirmation,
 		ModifyProduct,
+		Orders,
 	},{
 		mode: "modal",
 		headerMode: "none",

@@ -48,9 +48,33 @@ function getSalesByProduct(idStore) {
 	});
 }
 
+function getAllCustomers(idStore) {
+	return request({
+		url: '/orders/getCustomers',
+		params: { idStore },
+	}).then((response) => {
+		const { data, errmsg, errcode } = response.data;
+		if (errmsg) throw Object({ message: errmsg, code: errcode });
+		return data;
+	});
+}
+
+function getByCustomers(idCustomer, idStore) {
+	return request({
+		url: '/orders',
+		params: { where: {idStore: idStore, idCustomer: idCustomer} },
+	}).then((response) => {
+		const { data, errmsg, errcode } = response.data;
+		if (errmsg) throw Object({ message: errmsg, code: errcode });
+		return data;
+	});
+}
+
 export default {
 	placeOrder,
 	getOrders,
 	getSales,
 	getSalesByProduct,
+	getAllCustomers,
+	getByCustomers,
 };
